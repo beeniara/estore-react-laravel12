@@ -111,6 +111,7 @@ class ProductController extends Controller
 
         // Handle additional images
         if ($request->hasFile('first_image')) {
+            // Delete old first image
             if ($product->first_image) {
                 Storage::disk('public')->delete($product->first_image);
             }
@@ -118,6 +119,7 @@ class ProductController extends Controller
         }
 
         if ($request->hasFile('second_image')) {
+            // Delete old second image
             if ($product->second_image) {
                 Storage::disk('public')->delete($product->second_image);
             }
@@ -125,6 +127,7 @@ class ProductController extends Controller
         }
 
         if ($request->hasFile('third_image')) {
+            // Delete old third image
             if ($product->third_image) {
                 Storage::disk('public')->delete($product->third_image);
             }
@@ -146,7 +149,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        // Delete images
+        // Delete all associated images
         if ($product->thumbnail) {
             Storage::disk('public')->delete($product->thumbnail);
         }
@@ -160,11 +163,7 @@ class ProductController extends Controller
             Storage::disk('public')->delete($product->third_image);
         }
 
-        // Detach relationships
-        $product->colors()->detach();
-        $product->sizes()->detach();
-
-        // Delete product
+        // Delete the product
         $product->delete();
 
         return redirect()->route('products.index')->with('success', 'Product deleted successfully.');

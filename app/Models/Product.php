@@ -25,6 +25,10 @@ class Product extends Model
         'status'
     ];
 
+    protected $casts = [
+        'status' => 'boolean',
+    ];
+
     public function colors(): BelongsToMany
     {
         return $this->belongsToMany(Color::class);
