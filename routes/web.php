@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\SizeController;
+use App\Http\Controllers\Admin\CouponController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,5 +33,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Size Resource Routes
         Route::resource('sizes', SizeController::class)->except(['show']);
+
+        // Coupon Resource Routes
+        Route::resource('coupons', CouponController::class)->except(['show']);
     });
 });

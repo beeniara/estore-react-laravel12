@@ -26,6 +26,12 @@
                         Sizes
                     </a>
                 </li>
+                <li class="nav-item"> {{-- Coupons Link --}}
+                    <a class="nav-link d-flex align-items-center gap-2 {{ request()->routeIs('admin.coupons.*') ? 'active' : '' }}" href="{{ route('admin.coupons.index') }}">
+                        <i class="fa-solid fa-ticket"></i> {{-- Font Awesome --}}
+                        Coupons
+                    </a>
+                </li>
                 {{-- Add other menu items here later --}}
                 {{-- Example:
                 <li class="nav-item">
