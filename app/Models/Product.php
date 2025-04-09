@@ -15,14 +15,14 @@ class Product extends Model
     protected $fillable = [
         'name',
         'slug',
-        'quantity',
-        'price',
         'description',
+        'price',
+        'stock',
         'thumbnail',
         'first_image',
         'second_image',
         'third_image',
-        'status',
+        'status'
     ];
 
     public function colors(): BelongsToMany

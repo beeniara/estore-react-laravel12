@@ -17,27 +17,19 @@ Route::get('/', function () {
 });
 
 // Admin Routes
-Route::prefix('admin')->name('admin.')->group(function () {
-    // Login Routes (Guest Only)
-    Route::middleware('guest:admin')->group(function () {
-        Route::get('/login', [AdminController::class, 'login'])->name('login');
-        Route::post('/auth', [AdminController::class, 'auth'])->name('auth');
-    });
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
-    // Authenticated Admin Routes
-    Route::middleware('auth:admin')->group(function () {
-        Route::get('/dashboard', [AdminController::class, 'index'])->name('index');
-        Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
-
+    // Admin routes
+    Route::prefix('admin')->name('admin.')->group(function () {
         // Color Resource Routes
         Route::resource('colors', ColorController::class)->except(['show']);
-
+        
         // Size Resource Routes
         Route::resource('sizes', SizeController::class)->except(['show']);
-
-        // Coupon Resource Routes
-        Route::resource('coupons', CouponController::class)->except(['show']);
-
+        
         // Product Resource Routes
         Route::resource('products', ProductController::class);
     });
