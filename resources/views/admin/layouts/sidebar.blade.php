@@ -20,6 +20,12 @@
                         Colors
                     </a>
                 </li>
+                <li class="nav-item"> {{-- Sizes Link --}}
+                    <a class="nav-link d-flex align-items-center gap-2 {{ request()->routeIs('admin.sizes.*') ? 'active' : '' }}" href="{{ route('admin.sizes.index') }}">
+                        <i class="fa-solid fa-expand"></i> {{-- Font Awesome --}}
+                        Sizes
+                    </a>
+                </li>
                 {{-- Add other menu items here later --}}
                 {{-- Example:
                 <li class="nav-item">

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ColorController;
+use App\Http\Controllers\Admin\SizeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,5 +29,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Color Resource Routes
         Route::resource('colors', ColorController::class)->except(['show']);
+
+        // Size Resource Routes
+        Route::resource('sizes', SizeController::class)->except(['show']);
     });
 });

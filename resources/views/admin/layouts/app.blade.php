@@ -234,6 +234,28 @@
 
     @stack('scripts') {{-- Add a stack for page-specific scripts --}}
 
+    {{-- SweetAlert Flash Messages --}}
+    <script>
+        @if (session('success'))
+            Swal.fire({
+                icon: "success",
+                title: "Success!",
+                text: "{{ session('success') }}",
+                timer: 2500, // Auto close after 2.5 seconds
+                showConfirmButton: false
+            });
+        @endif
+        @if (session('error'))
+            Swal.fire({
+                icon: "error",
+                title: "Error!",
+                text: "{{ session('error') }}",
+                // timer: 2500, // Optional: Auto close
+                // showConfirmButton: false
+            });
+        @endif
+    </script>
+
 </body>
 
 </html> 
